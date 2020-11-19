@@ -14,14 +14,14 @@ function App() {
             <LoginPage />
           </Route>
 
-          <Route path="/">
+          <Route path="/chat">
             <AuthGuard>
               <ChatPage />
             </AuthGuard>
           </Route>
 
           <Route path="*">
-            <Redirect to="/"/>
+            <Redirect to="/chat"/>
           </Route>
         </Switch>
       </Router>

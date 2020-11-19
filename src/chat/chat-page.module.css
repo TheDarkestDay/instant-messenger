@@ -1,0 +1,17 @@
+.chatPage {
+  padding: 16px;
+  border: 1px solid #000000;
+  min-width: 60vw;
+  min-height: 300px;
+
+  border-radius: 4px;
+}
+
+.chatPageTitle {
+  margin-bottom: 12px;
+}
+
+.flexRow {
+  display: flex;
+  justify-content: space-between;
+}

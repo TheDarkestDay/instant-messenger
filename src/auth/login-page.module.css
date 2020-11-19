@@ -1,0 +1,19 @@
+.loginPage {
+  padding: 16px;
+  border: 1px solid #000000;
+
+  border-radius: 4px;
+}
+
+.loginPageTitle {
+  margin-bottom: 12px;
+}
+
+.loginFormLabel {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.loginFormField {
+  margin-right: 6px;
+}

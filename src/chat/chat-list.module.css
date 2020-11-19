@@ -1,0 +1,16 @@
+.chatList {
+  padding: 16px;
+  border: 1px solid #000000;
+  flex-basis: 200px;
+
+  border-radius: 4px;
+}
+
+.chatLink {
+  display: block;
+  padding: 16px;
+}
+
+.chatLink:hover {
+  background-color: rgba(0, 0, 0, .1);
+}

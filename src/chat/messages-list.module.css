@@ -1,0 +1,33 @@
+.messagesList {
+  padding: 16px;
+  border: 1px solid #000000;
+  flex-grow: 1;
+  margin-left: 12px;
+
+  border-radius: 4px;
+}
+
+.messageForm {
+  display: flex;
+  align-items: center;
+}
+
+.messageField {
+  flex-grow: 1;
+}
+
+.sendMessageButton {
+  margin-left: 8px;
+}
+
+.message {
+  display: flex;
+}
+
+.notOwnMessage {
+  flex-direction: row-reverse;
+}
+
+.messageHeader {
+  color: grey;
+}

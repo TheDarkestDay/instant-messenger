@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../api';
 import { AsyncStatus, useAsync } from '../common';
+import styles from './login-page.module.css';
 
 export const LoginPage = () => {
   const [state, setState] = useState({
@@ -34,17 +35,17 @@ export const LoginPage = () => {
   }
 
   return (
-    <section>
-      <h1>
+    <section className={styles.loginPage}>
+      <h1 className={styles.loginPageTitle}>
         Sign in
       </h1>
 
       <form onSubmit={handleFormSubmit}>
-        <label htmlFor="username">
+        <label className={styles.loginFormLabel} htmlFor="username">
           Your name:
         </label>
 
-        <input id="username" type="text" value={userName} onChange={handleUserNameChange} />
+        <input className={styles.loginFormField} id="username" type="text" value={userName} onChange={handleUserNameChange} />
 
         <button type="submit">
           Sign in

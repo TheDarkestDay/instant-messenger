@@ -1,11 +1,24 @@
 import { useContext, useEffect, useState } from 'react';
+import { getMessages } from '../api';
+import { AsyncStatus, useAsync } from '../common';
 import { WebSocketsContext } from './WebSocketsContext';
 
 export const useChatMessages = (chatId) => {
   const [state, setState] = useState({messages: []});
   const { socket } = useContext(WebSocketsContext);
+  const {data: initialMessages, status, runAsync} = useAsync(() => getMessages(chatId));
 
   const { messages } = state;
+
+  useEffect(() => {
+    runAsync();
+  }, [chatId]);
+
+  useEffect(() => {
+    if (status === AsyncStatus.completed) {
+      setState((oldState) => ({...oldState, messages: initialMessages}));
+    }
+  }, [setState, status, initialMessages]);
 
   useEffect(() => {
     if (!socket) {

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getChats } from '../api';
 import { AsyncStatus, useAsync } from '../common';
+import styles from './chat-list.module.css';
 
 export const ChatList = () => {
   const userId = localStorage.getItem('instant-messenger:userId');
@@ -16,11 +17,11 @@ export const ChatList = () => {
   }
 
   return (
-    <nav>
+    <nav className={styles.chatList}>
       {
         users.map((chat) => {
           return (
-            <Link key={chat.id} to={`/chat/${chat.id}`}>
+            <Link className={styles.chatLink} key={chat.id} to={`/chat/${chat.id}`}>
               {chat.user.name}
             </Link>
           );

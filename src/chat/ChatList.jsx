@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getChats } from '../api';
 import { AsyncStatus, useAsync } from '../common';
 import styles from './chat-list.module.css';
@@ -21,9 +21,9 @@ export const ChatList = () => {
       {
         users.map((chat) => {
           return (
-            <Link className={styles.chatLink} key={chat.id} to={`/chat/${chat.id}`}>
+            <NavLink className={styles.chatLink} key={chat.id} to={`/chat/${chat.id}`} activeClassName={styles.chatLinkActive}>
               {chat.user.name}
-            </Link>
+            </NavLink>
           );
         })
       }

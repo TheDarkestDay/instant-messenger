@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useCallback, useReducer } from 'react';
 import { AsyncStatus } from './asyncStatus';
 
 const initialState = {
@@ -11,6 +11,7 @@ const AsyncActionType = {
   started: 'started',
   completed: 'completed',
   failed: 'failed',
+  reset: 'reset',
 };
 
 const asyncReducer = (state, action) => {
@@ -32,6 +33,8 @@ const asyncReducer = (state, action) => {
         status: AsyncStatus.failed,
         data: action.payload.error,
       };
+    case AsyncActionType.reset:
+      return initialState;
   }
 };
 
@@ -51,5 +54,9 @@ export const useAsync = (asyncCallback) => {
       });
   };
 
-  return { data, status, error, runAsync };
+  const resetAsync = useCallback(() => {
+    dispatch({type: AsyncActionType.reset});
+  }, [dispatch]);
+
+  return { data, status, error, runAsync, resetAsync };
 };

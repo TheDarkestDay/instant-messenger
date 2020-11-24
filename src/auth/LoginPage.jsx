@@ -1,15 +1,24 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../api';
 import { AsyncStatus, useAsync } from '../common';
+import { StoreContext } from '../store/store-context';
 import styles from './login-page.module.css';
 
 export const LoginPage = () => {
   const [state, setState] = useState({
     userName: ''
   });
+  const store = useContext(StoreContext);
   const { userName } = state;
   const { data: createdUser, status, error, runAsync } = useAsync(() => createUser(userName));
+
+  useEffect(() => {
+    if (status === AsyncStatus.completed) {
+      store.setUsername(createdUser.name);
+    }
+
+  }, [status, createdUser, store]);
 
   const handleUserNameChange = (event) => {
     const newName = event.target.value;
